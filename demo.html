@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<script type="text/javascript" src="riny.searchTips.js"></script>
+	<title>demo</title>
+	<style>
+	body,div,ul,li,input{
+		margin:0;
+		padding:0;
+	}
+	input{
+		outline:none;
+		border:none;
+		-webkit-tap-highlight-color:rgba(255,255,255,0);
+	}
+	ul{
+		list-style:none;
+	}
+	.searchbar{
+		background-color:#ccc;
+		padding:5px;
+	}
+	.search{
+		padding:1px;
+		background-color:#cfcfcf;
+	}
+	#search_input{
+		display:block;
+		height:20px;
+		font:14px/14px arial;
+		width:100%;
+	}
+	.item{
+		overflow:hidden;
+		font-size:0;
+		color:#333;
+		padding:2px 0;
+		background-color:#fff;
+		margin:1px 0;
+	}
+	.item span,.item em{
+		font-size:14px;
+		display:inline-block;
+		width:50%;
+		text-indent:4px;
+
+	}
+	.item em{
+		text-align:center;
+	}
+	</style>
+</head>
+<body>
+	<div class="searchbar">
+		<div class="search">
+			<input type="text" placeholder="请输入搜索内容" id="search_input">
+		</div>
+		<ul class="tipslist" id="tipslist"></ul>
+	</div>
+	<script>
+	var data=[
+		{
+			"name":"中国",
+			"pinyin":"zhongguo"
+		},
+		{
+			"name":"英国",
+			"pinyin":"yingguo"
+		},
+		{
+			"name":"法国",
+			"pinyin":"faguo"
+		},
+		{
+			"name":"美国",
+			"pinyin":"meiguo"
+		},
+		{
+			"name":"新加坡",
+			"pinyin":"xinjiapo"
+		},
+		{
+			"name":"新西兰",
+			"pinyin":"xinxilan"
+		}
+	];
+
+	var data2=[
+		'中国',
+		'法国',
+		'美国',
+		'新西兰',
+		'新加坡'
+	];
+	</script>
+	<script>
+	var searchTips=new rinySearchTips({
+		el:'search_input',
+		list:'tipslist',
+		listTemplate:'<li class="item"><span>listTemplate</span><em>*</em></li>',
+		limit:10,
+		data:data,
+		name:'name',
+		pinyin:'pinyin'
+	});
+
+	/***listTemplate可以是任意结构，但插入提示内容的标签内必须添加listTemplate占位，且不允许出现listTemplate以外的内容
+		
+		如：
+
+		-----------------------------------
+
+		<a>
+			listTemplate                 √
+		</a>
+
+		-----------------------------------
+
+		<a>
+			<span></span>                ×
+			listTemplate
+		</a>
+
+		-----------------------------------
+
+		<li>
+			<a>listTemplate</a>
+			<span></span>                √
+		</li>
+
+		-----------------------------------
+
+
+	***/
+
+	</script>
+</body>
+</html>
